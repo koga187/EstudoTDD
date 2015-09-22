@@ -6,10 +6,10 @@ require "./vendor/autoload.php";
 
 use CDC\Loja\Carrinho\CarrinhoDeCompras;
 use CDC\Loja\Produto\Produto;
-use CDC\Loja\Produto\MaiorMenor;
-use \PhpUnit_Framework_TestCase as PhpUnit;
+use CDC\Loja\Produto\MaiorEMenor;
+use PhpUnit_Framework_TestCase as PhpUnit;
 
-class MaiorMenorTest extends Phpunit
+class MaiorEMenorTest extends Phpunit
 {
     function testOrdemDecrescente()
     {
@@ -19,7 +19,7 @@ class MaiorMenorTest extends Phpunit
         $carrinho->adiciona(new Produto("Liquidificador", 250.00));
         $carrinho->adiciona(new Produto("Jogo de pratos", 70.00));
 
-        $maiorMenor = new MaiorMenor();
+        $maiorMenor = new MaiorEMenor();
 
         $maiorMenor->encontra($carrinho);
         $this->assertEquals("Jogo de pratos", $maiorMenor->getMenor()->getNome());

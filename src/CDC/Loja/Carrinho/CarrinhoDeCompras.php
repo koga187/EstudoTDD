@@ -20,7 +20,7 @@ class CarrinhoDeCompras
         return $this;
     }
 
-    public function getProtudos()
+    public function getProdutos()
     {
         return $this->produtos;
     }
