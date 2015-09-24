@@ -5,13 +5,11 @@ namespace CDC\Loja\Produto;
 require "./vendor/autoload.php";
 
 use CDC\Loja\Carrinho\CarrinhoDeCompras;
-use CDC\Loja\Produto\Produto;
-use CDC\Loja\Produto\MaiorEMenor;
 use PhpUnit_Framework_TestCase as PhpUnit;
 
 class MaiorEMenorTest extends Phpunit
 {
-    function testOrdemDecrescente()
+    public function testOrdemDecrescente()
     {
         $carrinho = new CarrinhoDeCompras();
 
@@ -23,5 +21,19 @@ class MaiorEMenorTest extends Phpunit
 
         $maiorMenor->encontra($carrinho);
         $this->assertEquals("Jogo de pratos", $maiorMenor->getMenor()->getNome());
+        $this->assertEquals("Geladeira", $maiorMenor->getMaior()->getNome());
+    }
+
+    public function testApenasUmproduto()
+    {
+        $carrinho = new CarrinhoDeCompras();
+
+        $carrinho->adiciona(new Produto("Geladeira", 450.00));
+
+        $maiorMenor = new MaiorEMenor();
+        $maiorMenor->encontra($carrinho);
+
+        $this->assertEquals("Geladeira", $maiorMenor->getMaior()->getNome());
+        $this->assertEquals("Geladeira", $maiorMenor->getMenor()->getNome());
     }
 }
