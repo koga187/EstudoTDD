@@ -42,7 +42,5 @@ class ConversorDeNumerosRomanos
 
             $ultimoVizinhoDaDireita = $atual;
         }
-
-      return $acumulador;
     }
 }
